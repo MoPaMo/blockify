@@ -19,6 +19,8 @@
   "homepage": "https://github.com/MoPaMo/blockify#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "spotify-web-api-node": "^5.0.2",
+    "sqlite3": "^5.0.2"
   }
 }

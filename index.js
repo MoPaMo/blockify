@@ -13,6 +13,15 @@ let db = new sqlite3.Database("./db.db", sqlite3.OPEN_READWRITE, (err) => {
   console.log("Connected to the database.");
 });
 
+var SpotifyWebApi = require('spotify-web-api-node');
+
+// credentials are optional
+var spotifyApi = new SpotifyWebApi({
+  clientId: process.env.clientId,
+  clientSecret: process.env.clientSecret,
+  redirectUri: process.env.callbackURL
+});
+
 app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
 });

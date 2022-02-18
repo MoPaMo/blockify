@@ -17,7 +17,18 @@ var spotifyApi = new SpotifyWebApi({
 app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`);
 });
-app.listen(port, function(err) {
+
+app.get("/login", (req, res) => {
+  state = 'some-state-of-my-choice';
+  var scopes = ['playlist-modify-public']
+
+  // Create the authorization URL
+  var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
+
+  res.redirect(authorizeURL);
+})
+
+app.listen(port, function (err) {
   if (err) console.log(err);
   console.log("Server listening on PORT", port);
 });

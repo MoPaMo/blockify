@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   state = 'some-state-of-my-choice';
-  var scopes = ['playlist-modify-public']
+  var scopes = ['playlist-modify-public', 'playlist-read-collaborative']
 
   // Create the authorization URL
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);

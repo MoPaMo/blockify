@@ -5,7 +5,12 @@ const port = process.env.PORT != undefined ? process.env.PORT : 8080;
 const Database = require("@replit/database");
 const db = new Database();
 const session = require('express-session')
-
+app.use(session({
+  secret: process.env.cookieSecret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 var SpotifyWebApi = require('spotify-web-api-node');
 
 // credentials are optional
@@ -30,7 +35,7 @@ app.get("/login", (req, res) => {
 })
 
 app.get("/cb", (req, res)=>{
-
+  console.log(res);
 })
 
 app.listen(port, function (err) {

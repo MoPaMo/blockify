@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT != undefined ? process.env.PORT : 8080;
 const Database = require("@replit/database");
 const db = new Database();
+const session = require('express-session')
 
 var SpotifyWebApi = require('spotify-web-api-node');
 
@@ -26,6 +27,10 @@ app.get("/login", (req, res) => {
   var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
   res.redirect(authorizeURL);
+})
+
+app.get("/cb", (req, res)=>{
+
 })
 
 app.listen(port, function (err) {
